@@ -1,0 +1,23 @@
+{
+  "name": "simplereptile",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/waterdelay/simpleReptile.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/waterdelay/simpleReptile/issues"
+  },
+  "homepage": "https://github.com/waterdelay/simpleReptile#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "download": "^7.1.0"
+  }
+}
