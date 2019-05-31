@@ -42,7 +42,7 @@ for (let i = startPage; i <= endPage; i++) {
                 // console.log(index,'https:'+$(item).data("original"))//获取data方法
                 urlS.push('https:' + $(item).data("original"))
             })
-            console.log(urlS)
+            // console.log(urlS)
             Promise.all(urlS.map(x => download(x, ' dist '))).then(() => {
                 console.log(' files downloaded！')
             })
