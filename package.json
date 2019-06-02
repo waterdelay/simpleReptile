@@ -1,4 +1,3 @@
-
 {
   "name": "simplereptile",
   "version": "1.0.0",
@@ -16,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/waterdelay/simpleReptile/issues"
   },
-  "homepage": "https://github.com/waterdelay/simpleReptile#readme"
+  "homepage": "https://github.com/waterdelay/simpleReptile#readme",
+  "dependencies": {
+    "selenium-webdriver": "^4.0.0-alpha.1"
+  }
 }
