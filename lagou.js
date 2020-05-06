@@ -1,6 +1,15 @@
+/*
+ * @Author       : daiwei
+ * @Date         : 2019-06-02 12:35:33
+ * @LastEditors  : daiwei
+ * @LastEditTime : 2020-04-29 09:56:25
+ * @FilePath     : \simpleReptile\lagou.js
+ */
+// let addInfoSql = require('./addSql') 
 const {Builder, By, Key, until} = require('selenium-webdriver');
 const {Options} = require('selenium-webdriver/chrome');
-let URL = 'https://www.lagou.com/jobs/list_%E5%89%8D%E7%AB%AF?labelWords=sug&fromSearch=true&suginput=%E5%89%8D%E7%AB%AF';
+// let URL = 'https://www.lagou.com/jobs/list_%E5%89%8D%E7%AB%AF?labelWords=sug&fromSearch=true&suginput=%E5%89%8D%E7%AB%AF';
+let URL = 'https://www.lagou.com/jobs/list_web%E5%89%8D%E7%AB%AF?&px=default&city=%E7%A6%8F%E5%B7%9E#filterBox';
 let currentPage = 1;
 const maxPage = 10;
 let driver =null;
@@ -11,6 +20,7 @@ options.addArguments('--headless'); //这里还可以设置请求头
 //   let driver = await new Builder().forBrowser('chrome').build(); //使用什么浏览器爬  驱动器
 //   driver = await new Builder().forBrowser('chrome').build(); //使用什么浏览器爬  驱动器   有头浏览器
   driver = await new Builder().setChromeOptions(options).forBrowser('chrome').build();
+  console.log(driver)
   await driver.get(URL); 
   await getData(); 
 })();
@@ -29,19 +39,20 @@ async function getData(){
         for(var i = 0;i<webElement.length;i++){
             let li = webElement[i];
             //查找h3
-            let jobName = await li.findElement(By.css('.list_item_top h3')).getText();
-            let companyName = await li.findElement(By.css('.company a')).getText();
-            let money = await li.findElement(By.css('.list_item_top .money')).getText();
-            let companyLink = await li.findElement(By.css('.company a')).getAttribute('href');
+            let title = await li.findElement(By.css('.list_item_top h3')).getText();
+            let conpany_id  = await li.findElement(By.css('.company a')).getText();
+            let salary = await li.findElement(By.css('.list_item_top .money')).getText();
+            let address = await li.findElement(By.css('.company a')).getAttribute('href');
             let result = {
-                jobName,
-                companyName,
-                money,
-                companyLink
+                conpany_id ,
+                address,
+                title,
+                salary,
             }
             results.push(result)
             // console.log(jobName);
             console.log(results);
+        //    return results
         }
         await driver.findElement(By.css('.pager_next')).click();
         //递归调用函数
